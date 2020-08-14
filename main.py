@@ -1,35 +1,23 @@
 import requests
-import pandas as pd
-import numpy as np
 from bs4 import BeautifulSoup
-from tabulate import tabulate
 
+URL = 'https://en.wikipedia.org/wiki/Template:COVID-19_pandemic_data#covid19-container'
+page = requests.get(URL)
+soup = BeautifulSoup(page.content, 'html.parser')
 
+countries = soup.find(id="covid19-container")
+#print(countries.prettify())
 
+country_elems = countries.find_all('tr')
+#print(continent_elems)
 
-def data_downloader():
-    
-    URL = 'https://www.worldometers.info/coronavirus/#countries'
-    html_page = requests.get(URL).text
-    soup = BeautifulSouph(tml_page, 'lxml')
-
-    # Isolate table data showing covid19 data per country
-    get_table = soup.find("table", id="main_table_countries_today")
-    get_table_data = get_table.tbody.find_all('tr')
-
-    # convert data to a dictionary
-    dic={}
-    for i in range(len(get_table_data)):
-        try: 
-            key = get_table_data[i].find_all("a", href = True)[0].string
-        except: 
-            key = get_table_data[i].find_all("td").string
-        values = [j.string for j in get_able_data[i].find_all("td")]
-        dic[key]=values
-        column_names = ["Total Cases", "New Cases", "Total Deaths", "New Deaths", "Total Recovered", "Active", 
-                       "Seroius Critical", "Total Cases/1M pop", "Total Deaths/1M pop"]
-        df.index_name="country"
-        df.columns = column_names
-        df.tocsv("Corona_live_cases.csv")
-
-
+for country_elem in country_elems:
+    #print(country_elem, end='\n'*2)
+    td_list = country_elem.find_all("td")
+    title_elem = country_elem.find("a")
+    cases_elem = country_elem.findAll('th')[0].text
+    # deths_elem = td_list[1].text
+    #print(title_elem)
+    print(country_elem[1])
+    # print(deths_elem)
+    # print()
