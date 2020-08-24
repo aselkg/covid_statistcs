@@ -1,6 +1,62 @@
 body {
     margin: auto;
 }
-.navbar {
-    width: 100%;
+.title {
+    margin-top: 100px;
+    text-align: center;
 }
+table {
+    max-width: 500px;
+    max-height: 700px;
+    margin: auto;
+    text-align: center;
+}
+.header {
+    color: whitesmoke;
+    font-size: 25px;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(41, 39, 39);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.dataframe {
+    margin: auto;
+}
+
+
+.tab {
+    overflow: hidden;
+  }
+  
+ 
+  .tab a {
+    color: whitesmoke;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    text-align: center;
+  }
+
+  .info {
+      margin-top: 100px;
+      padding: 25px;
+  }
